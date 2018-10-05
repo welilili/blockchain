@@ -1,4 +1,4 @@
-title: Hello, world! I'm David Freeman
+title: Hello, world! I'm Stephen Lee
 description: > # this means to ignore newlines until "baseurl:"
   News and articls about blockchain and bitcoin.Hope you'll like it.
 permalink: ':title/'
@@ -9,7 +9,7 @@ site-twitter: #if your site has a twitter account, enter it here
 # Author Settings
 author: Stephen Lee # add your name
 author-img: stephen-lee.jpg # add your photo
-about-author: 我致力于翻译关于区块链及比特币相关的文章。Always hungry to keep learning. # add description
+about-author: 我致力于翻译关于区块链及比特币相关的文章。 # add description
 social-twitter: # add your Twitter handle
 social-facebook: # add your Facebook handle
 social-github: welilili # add your Github handle
