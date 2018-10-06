@@ -1,0 +1,189 @@
+---
+layout: post
+title: 如何在在5分钟创建一个比特币应用（二）
+date: 2018-10-06 18:30:20 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: o-six.jpg # Add image post (optional)
+fig-caption: # Add figcaption (optional)
+tags: [区块链, 网站]
+---
+## **如何在5分钟创建一个比特币应用**？
+
+> 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
+
+
+
+##### 先修技能：
+
+> HTML 和JavaScript语言即可。
+>
+> 你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。
+
+
+
+此应用100%的为前端（没有服务器），通过bitdb抓取并展示从区块链上获得的memo.cash交易。这个网页应用看起来会是这样：
+
+![](E:\git_project\blockchain\assets\img\app.png)
+
+#### 第一步：获取bitdb.network公共节点的api钥匙
+
+bitdb.network 是一个有具有免费HTTP api 的，全是由BitDB执行的端点。这个端点完全免费，但你需要注册并获取一个api钥匙（仅为了防止DDOS攻击）。
+
+[[获取 bitdb.network API 钥匙\]](https://bitdb.network/v2/dashboard)
+
+第二步 创建BitDB请求
+
+我们将按照 [memo.cash OP_RETURN](https://memo.cash/protocol) 协议抓取比特币交易。查看这个协议条款，你会在最上面发现如下内容：
+
+![](E:\git_project\blockchain\assets\img\memoprotocol.png)
+
+这只是协议的一个例子，但其他大多数OP_RETURN协议也以相似的方式运行。在这个例子中，这里有3个推送数据：`OP_RETURN`, `6d01`, 和 `6d656d6f`
+
+按照BitDB的文件格式索引为：
+
+- **out.b0**: `{ "op": 106 }` (OP_RETURN'的代码是 106)
+- **out.b1**: 0x6d01以base64编码的版本
+- **out.b2**:  0x6d656d6f以base64编码的版本
+
+> 关于学习更多Bitdb 文件格式，看这里[here](https://docs.bitdb.network/docs/indexer#2-bitdb-document-format)
+
+现在我们知道了memo的协议如何工作，接下来看下我们感兴趣的真实的“行为”（即图中的post memo）。我们只想抓取所有的“post memo”行为，并作展示。
+
+![](E:\git_project\blockchain\assets\img\memopost.png)
+
+所以我们所需要的是：
+
+- 一个 OP_RETURN 输出 ( {"op": 106} )
+- 要有6d02的 `out.b1`  (以 hex 格式)
+- 提取 `out.b2` (信息), 能展示在屏幕上
+
+下面是一个真实世界的memo.cash的“Post memo”交易输出：
+
+```
+{
+...
+"out": [{
+...
+}, {
+"i": 1,
+"b0": {
+"op": 106
+},
+"b1": "bQI=",
+"s1": "m\u0002",
+"b2": "SGVsbG8gZ29vZCBqb2Igb25saW5lIHdvcmtpbmcKaHR0cDovL3JlZGQuaXQvOWhmZ2xl",
+"s2": "Hello good job online working\nhttp://redd.it/9hfgle",
+"str": "<Script: OP_RETURN 2 0x6d02 51 0x48656c6c6f20676f6f64206a6f62206f6e6c696e6520776f726b696e670a687474703a2f2f726564642e69742f396866676c65>",
+"e": {
+"v": 0,
+"i": 1
+}
+}]
+}
+```
+
+下面是过滤上面格式的请求：
+
+```
+var query = {
+  v: 2,
+  e: { "out.b1": "hex" },
+  q: {
+    find: { "out.b1": "6d02" },
+    limit: 50,
+    project: { "out.b1.$": 1 }
+}
+};
+```
+
+1. v：2. 我们使用的是api版本2，所以必须在请求的协议中标注。
+
+2. e:{ "out.b1": "hex" }  由于我们的out.b1 将以hex格式的作为属性，我们需要标注编码方式为hex。
+
+3. q: 在q里面只是一个常规的MongoDB请求。
+
+    find:寻找匹配  "out.b1": "6d02" （我们在上面已经标注了hex编码，所以请求引擎将会以hex识别）
+
+    limit：得到50
+
+   project：这是一个特别的MongoDB 映射操作，仅返回一个匹配的文件内容而不是整个文件。在这里，请求将会匹配一个交易的输出，如果没有这个条件，将会返回整个的交易。我们只想返回匹配的OP_RETURN 输出，所以我们需要添加这一行内容。
+
+
+
+   ------
+
+   #### 第三步 写网页应用
+
+   现在我们已经写好了请求，只需要对bitdb节点做一个HTTP请求并得到结果。（记住，在 **[YOUR API KEY GOES HERE]**置换为你在第一步获取的api钥匙）
+
+   <html>
+
+   <head>
+   <style>
+   body {
+   padding: 50px;
+   font-family: arial;
+   font-size: 12px;
+   }
+   div {
+   width: 500px;
+   margin: 0 auto;
+   padding: 10px 0;
+   }
+   </style>
+   <script>
+   // The query we constructed from step 2.
+   var query = {
+   v: 2,
+   e: { "out.b1": "hex" },
+   q: {
+   find: { "out.b1": "6d02" },
+   limit: 50,
+   project: { "out.b1.$": 1 }
+   }
+   };
+   // Turn the query into base64 encoded string.
+   // This is required for accessing a public bitdb node
+   var b64 = btoa(JSON.stringify(query));
+   var url = "https://bitdb.network/q/" + b64;
+   // Attach API KEY as header
+   var header = {
+   headers: { key: [YOUR API KEY GOES HERE] }
+   };
+   // Make an HTTP request to bitdb.network public endpoint
+   fetch(url, header).then(function(r) {
+   return r.json()
+   }).then(function(r) {
+   // Parse the response and render the results on the screen
+   r.confirmed.forEach(function(output) {
+   var div = document.createElement("div");
+   div.innerHTML = output.out[0].s2;
+   document.body.appendChild(div)
+   })
+   })
+   </script>
+   </head>
+   <body>
+   </body>
+   </html>
+
+搞定！用浏览器打开这个html文件，你应该会看到下面的截图，包含最新的memo.cash内容。（亲测有效！）
+
+![](E:\git_project\blockchain\assets\img\app.png)
+
+
+
+[点击查看英文原文：](https://docs.bitdb.network/docs/tutorial_v2)
+
+#### 什么是bitdb 2.0？
+
+根据官方说明
+
+> 1. BitDB is an autonomous database that continuously synchronizes itself with Bitcoin.
+> 2. BitDB stores every bitcoin transaction in a structured document format that can be queried against like a regular database.
+> 3. With a simple MongoDB query, anyone can easily query, filter, and build powerful decentralized applications on Bitcoin.
+
+1. BitDB是一个自动化的数据库，能够与比特币同步。
+2. BitDB以结构化的文档格式储存比特币交易，能够像一般的数据库那样进行访问。
+3. 通过简单的MongoDB请求，任何人能够非常容易地请求，过滤，以及在比特币上创建强大的去中心化应用。
+

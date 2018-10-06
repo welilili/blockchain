@@ -9,9 +9,11 @@ tags: [区块链, 网站]
 ---
 ## **如何在比特币区块链上使用bitdb 2.0 建一个网站。**
 
-> 据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。之后在BCH开发者Unwriter和一个名为“Cryptograffitiweb”的工具的帮助下，Mulders的链上网站“Bitcoin Cash Hoarder”现在可以在任何浏览器上看到。Mulders表示：“如果有人能在不需要像维基解密这样的组织的情况下发布敏感信息，那么任何人都可以匿名发布信息，而不会危及自己或任何中间人。”据悉，Bitdb 2.0是一个平台，可接受比特币交易并将其放入结构化的可读文档或者在Donald Mulders此次使用的HTML代码中。（[中文来源：币世界](http://www.bishijie.com/kuaixun_118500)）（英文来源 [bitcoin news: Launching a Website on the Bitcoin Cash Network Is Now a Reality](https://news.bitcoin.com/)）
+> 据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。
 
-按：这篇文章翻译的就是这位在yours上发的文章来源：[Hosting a website on the BCH blockchain with bitdb 2.0. I am close but no sigar.](https://www.yours.org/content/hosting-a-website-on-the-bch-blockchain-with-bitdb-20----------i-am-5b8346293439)由于口水话太多，没有逐一翻译。
+> 之后在BCH开发者Unwriter和一个名为“Cryptograffitiweb”的工具的帮助下，Mulders的链上网站“Bitcoin Cash Hoarder”现在可以在任何浏览器上看到。Mulders表示：“如果有人能在不需要像维基解密这样的组织的情况下发布敏感信息，那么任何人都可以匿名发布信息，而不会危及自己或任何中间人。”据悉，Bitdb 2.0是一个平台，可接受比特币交易并将其放入结构化的可读文档或者在Donald Mulders此次使用的HTML代码中。（[中文来源：币世界](http://www.bishijie.com/kuaixun_118500)）（英文来源 [bitcoin news: Launching a Website on the Bitcoin Cash Network Is Now a Reality](https://news.bitcoin.com/)）
+
+按：这篇文章翻译的就是Donald Mulders在yours上发的文章来源：[Hosting a website on the BCH blockchain with bitdb 2.0. I am close but no sigar.](https://www.yours.org/content/hosting-a-website-on-the-bch-blockchain-with-bitdb-20----------i-am-5b8346293439)由于口水话太多，没有逐一翻译。
 
 ------
 
@@ -21,9 +23,11 @@ I can do a little HTML and I can mess around a littble bit in existing code I ta
 
 Anyway I started playing around with an idea to see how far I could take it. The idea is to host a simple HTML website on the bitcoin cash blockchain that easily could be viewed in a browser. In such a way that even my own mother is able to view it as if it was just an ordinairy website. Is there a use case? Does this even need blockchain? Well imagine if someone could publish sensitive information without the need for organisation’s such as WikiLeaks, readable as a ordinairy website for anyone in the world. This way anyone could publish information anonymous without endangering themselfs or any middleman. People like Julian Assange are hard to find nowadays, and I do not expect that there are many people who dare to take on such a role in the future. Freedom of expression, freedom of information, free journalism and a secure way to publish information for whistleblowers. This is the use case.
 
-作者打算在区块链上建一个简单的可以通过浏览器访问的html网站，这样即使是他妈妈也会以为这是一个普通的网站，这样有个好处，人们可以匿名发布一些敏感信息而不用通过维基泄密那样的组织，同时免于可能的危险。
+作者打算在区块链上建一个简单的可以通过浏览器访问的html网站，这样即使是他妈妈也会以为这是一个普通的网站，这样有个好处，人们可以匿名发布一些敏感信息而不用通过维基泄密那样的组织。
 
- ==（！这里的原理没有说明，为什么可以匿名，以及可以做到多大程度上的匿名。）==
+[^1]: 这里的原理没有说明，为什么可以匿名，以及可以做到多大程度上的匿名。
+
+，同时免于可能的危险。
 
 To see how far I could take this idea I made a very simple website in HTML and I included a snake game in JavaScript just to see if it would work. Lean and mean. This is how the site would look like. 
 
