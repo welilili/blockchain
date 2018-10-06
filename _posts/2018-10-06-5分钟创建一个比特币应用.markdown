@@ -7,11 +7,7 @@ img: o-six.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [区块链, 网站]
 ---
-## **如何在5分钟创建一个比特币应用**？
-
 > 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
-
-
 
 ##### 先修技能：
 
@@ -110,7 +106,7 @@ var query = {
 
 
 
-   ------
+------
 
    #### 第三步 写网页应用
 
