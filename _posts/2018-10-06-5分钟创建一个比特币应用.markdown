@@ -3,7 +3,7 @@ layout: post
 title: 
 date: 2018-10-06 18:30:20 +0300
 description: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
-img:  # Add image post (optional)
+img:how-to-start.jpg# Add image post (optional)
 fig-caption: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。 # Add figcaption (optional)
 tags: [区块链, 网站]
 ---
