@@ -6,6 +6,7 @@ description: 90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch h
 img: i-rest.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Holidays, Hawaii]
+excerpt: 据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0。
 ---
 Fam据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。
 
