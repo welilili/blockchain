@@ -1,20 +1,22 @@
-title: Hello, world! I'm Stephen Lee
+title: Hello, world! I'm David Freeman
 description: > # this means to ignore newlines until "baseurl:"
-  News and articls about blockchain and bitcoin.Hope you'll like it.
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
 permalink: ':title/'
-baseurl: "/blockchain" # the subpath of your site, e.g. /blog
+baseurl: "/flexible-jekyll" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: #if your site has a twitter account, enter it here
 
 # Author Settings
-author: Stephen Lee # add your name
-author-img: stephen-lee.jpg # add your photo
-about-author: 我致力于翻译关于区块链及比特币相关的文章。 # add description
+author: David Freeman # add your name
+author-img: david-freeman.jpg # add your photo
+about-author: I am a web developer focusing on front-end development. Always hungry to keep learning. # add description
 social-twitter: # add your Twitter handle
 social-facebook: # add your Facebook handle
-social-github: welilili # add your Github handle
+social-github: artemsheludko # add your Github handle
 social-linkedin: # add your Linkedin handle
-social-email: iloveufor10000@protonmail.com # add your Email address
+social-email: # add your Email address
 
 # Disqus
 discus-identifier: mr-brown # add your discus identifier

@@ -1,17 +1,15 @@
 ---
 layout: post
-title: 5分钟创建一个比特币应用
-date: 2018-10-06 18:30:20 +0300
-description: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
-img:how-to-start.jpg# Add image post (optional)
-fig-caption: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。 # Add figcaption (optional)
-tags: [区块链, 网站]
+title: How I Rest From Work
+date: 2017-09-12 13:32:20 +0300
+description: You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. # Add post description (optional)
+img: i-rest.jpg # Add image post (optional)
+fig-caption: # Add figcaption (optional)
+tags: [Holidays, Hawaii]
 ---
-##### 先修技能：
+HTML 和JavaScript语言即可。
 
-> HTML 和JavaScript语言即可。
->
-> 你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。
+你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。
 
 
 
@@ -96,9 +94,9 @@ var query = {
 
 3. q: 在q里面只是一个常规的MongoDB请求。
 
-    find:寻找匹配  "out.b1": "6d02" （我们在上面已经标注了hex编码，所以请求引擎将会以hex识别）
+   find:寻找匹配  "out.b1": "6d02" （我们在上面已经标注了hex编码，所以请求引擎将会以hex识别）
 
-    limit：得到50
+   limit：得到50
 
    project：这是一个特别的MongoDB 映射操作，仅返回一个匹配的文件内容而不是整个文件。在这里，请求将会匹配一个交易的输出，如果没有这个条件，将会返回整个的交易。我们只想返回匹配的OP_RETURN 输出，所以我们需要添加这一行内容。
 
@@ -106,7 +104,7 @@ var query = {
 
 ------
 
-   #### 第三步 写网页应用
+#### 第三步 写网页应用
 
    现在我们已经写好了请求，只需要对bitdb节点做一个HTTP请求并得到结果。（记住，在 **[YOUR API KEY GOES HERE]**置换为你在第一步获取的api钥匙）
 
@@ -157,6 +155,7 @@ var query = {
    })
    </script>
    </head>
+
    <body>
    </body>
    </html>
@@ -180,4 +179,3 @@ var query = {
 1. BitDB是一个自动化的数据库，能够与比特币同步。
 2. BitDB以结构化的文档格式储存比特币交易，能够像一般的数据库那样进行访问。
 3. 通过简单的MongoDB请求，任何人能够非常容易地请求，过滤，以及在比特币上创建强大的去中心化应用。
-
