@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: 5分钟创建一个比特币应用
 date: 2018-10-06 18:30:20 +0300
 description: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
 img:how-to-start.jpg# Add image post (optional)
