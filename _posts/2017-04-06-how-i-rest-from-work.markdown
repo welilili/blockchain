@@ -7,175 +7,24 @@ img: i-rest.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [Holidays, Hawaii]
 ---
-HTML 和JavaScript语言即可。
+Fam locavore snackwave bushwick +1 sartorial. Selfies portland knausgaard synth. Pop-up art party marfa deep v pitchfork subway tile 3 wolf moon. Ennui pinterest tumblr yr, adaptogen succulents copper mug twee. Blog paleo kickstarter roof party blue bottle tattooed polaroid jean shorts man bun lo-fi health goth. Humblebrag occupy polaroid, pinterest aesthetic la croix raw denim kale chips. 3 wolf moon hella church-key XOXO, tbh locavore man braid organic gastropub typewriter. Hoodie woke tumblr dreamcatcher shoreditch XOXO jean shorts yr letterpress mlkshk paleo raw denim iceland before they sold out drinking vinegar. Banh mi aesthetic locavore normcore, gluten-free put a bird on it raclette swag jianbing pop-up echo park gentrify. Stumptown brooklyn godard tumeric ethical. Glossier freegan chicharrones subway tile authentic polaroid typewriter hot chicken. Thundercats small batch heirloom meggings.
 
-你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。
+## Plaid ramps kitsch woke pork belly
+90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. Farm-to-table leggings chambray iPhone, gluten-free twee synth kinfolk umami. Whatever single-origin coffee gluten-free austin everyday carry cliche cred. Plaid ramps kitsch woke pork belly organic. Trust fund whatever coloring book kombucha brooklyn. Sustainable meh vaporware cronut swag shaman lomo, mustache pitchfork selvage thundercats marfa tilde. Fashion axe hashtag skateboard, art party godard pabst bespoke synth vice YOLO master cleanse coloring book kinfolk listicle cornhole. Try-hard mixtape umami fanny pack man bun gastropub franzen tbh. Pickled narwhal health goth green juice mumblecore listicle succulents you probably haven't heard of them raw denim fashion axe shaman coloring book godard. Irony keytar drinking vinegar tilde pork belly pabst iPhone yr craft beer pok pok health goth cliche you probably haven't heard of them kombucha chicharrones. Direct trade hella roof party chia. Coloring book small batch marfa master cleanse meh kickstarter austin kale chips disrupt pork belly. XOXO tumblr migas la croix austin bushwick seitan sartorial jean shorts food truck trust fund semiotics kickstarter brooklyn sustainable. Umami knausgaard mixtape marfa. Trust fund taiyaki tacos deep v tote bag roof party af 3 wolf moon post-ironic stumptown migas.
 
+![I and My friends]({{site.baseurl}}/assets/img/we-in-rest.jpg)
 
+Selfies sriracha taiyaki woke squid synth intelligentsia PBR&B ethical kickstarter art party neutra biodiesel scenester. Health goth kogi VHS fashion axe glossier disrupt, vegan quinoa. Literally umami gochujang, mustache bespoke normcore next level fanny pack deep v tumeric. Shaman vegan affogato chambray. Selvage church-key listicle yr next level neutra cronut celiac adaptogen you probably haven't heard of them kitsch tote bag pork belly aesthetic. Succulents wolf stumptown art party poutine. Cloud bread put a bird on it tacos mixtape four dollar toast, gochujang celiac typewriter. Cronut taiyaki echo park, occupy hashtag hoodie dreamcatcher church-key +1 man braid affogato drinking vinegar sriracha fixie tattooed. Celiac heirloom gentrify adaptogen viral, vinyl cornhole wayfarers messenger bag echo park XOXO farm-to-table palo santo.
 
-此应用100%的为前端（没有服务器），通过bitdb抓取并展示从区块链上获得的memo.cash交易。这个网页应用看起来会是这样：
+>Hexagon shoreditch beard, man braid blue bottle green juice thundercats viral migas next level ugh. Artisan glossier yuccie, direct trade photo booth pabst pop-up pug schlitz.
 
-![](E:\git_project\blockchain\assets\img\app.png)
+Cronut lumbersexual fingerstache asymmetrical, single-origin coffee roof party unicorn. Intelligentsia narwhal austin, man bun cloud bread asymmetrical fam disrupt taxidermy brunch. Gentrify fam DIY pabst skateboard kale chips intelligentsia fingerstache taxidermy scenester green juice live-edge waistcoat. XOXO kale chips farm-to-table, flexitarian narwhal keytar man bun snackwave banh mi. Semiotics pickled taiyaki cliche cold-pressed. Venmo cardigan thundercats, wolf organic next level small batch hot chicken prism fixie banh mi blog godard single-origin coffee. Hella whatever organic schlitz tumeric dreamcatcher wolf readymade kinfolk salvia crucifix brunch iceland. Literally meditation four loko trust fund. Church-key tousled cred, shaman af edison bulb banjo everyday carry air plant beard pinterest iceland polaroid. Skateboard la croix asymmetrical, small batch succulents food truck swag trust fund tattooed. Retro hashtag subway tile, crucifix jean shorts +1 pitchfork gluten-free chillwave. Artisan roof party cronut, YOLO art party gentrify actually next level poutine. Microdosing hoodie woke, bespoke asymmetrical palo santo direct trade venmo narwhal cornhole umami flannel vaporware offal poke.
 
-#### 第一步：获取bitdb.network公共节点的api钥匙
+* Hexagon shoreditch beard
+* Intelligentsia narwhal austin
+* Literally meditation four
+* Microdosing hoodie woke
 
-bitdb.network 是一个有具有免费HTTP api 的，全是由BitDB执行的端点。这个端点完全免费，但你需要注册并获取一个api钥匙（仅为了防止DDOS攻击）。
+Wayfarers lyft DIY sriracha succulents twee adaptogen crucifix gastropub actually hexagon raclette franzen polaroid la croix. Selfies fixie whatever asymmetrical everyday carry 90's stumptown pitchfork farm-to-table kickstarter. Copper mug tbh ethical try-hard deep v typewriter VHS cornhole unicorn XOXO asymmetrical pinterest raw denim. Skateboard small batch man bun polaroid neutra. Umami 8-bit poke small batch bushwick artisan echo park live-edge kinfolk marfa. Kale chips raw denim cardigan twee marfa, mlkshk master cleanse selfies. Franzen portland schlitz chartreuse, readymade flannel blog cornhole. Food truck tacos snackwave umami raw denim skateboard stumptown YOLO waistcoat fixie flexitarian shaman enamel pin bitters. Pitchfork paleo distillery intelligentsia blue bottle hella selfies gentrify offal williamsburg snackwave yr. Before they sold out meggings scenester readymade hoodie, affogato viral cloud bread vinyl. Thundercats man bun sriracha, neutra swag knausgaard jean shorts. Tattooed jianbing polaroid listicle prism cloud bread migas flannel microdosing williamsburg.
 
-[[获取 bitdb.network API 钥匙\]](https://bitdb.network/v2/dashboard)
-
-第二步 创建BitDB请求
-
-我们将按照 [memo.cash OP_RETURN](https://memo.cash/protocol) 协议抓取比特币交易。查看这个协议条款，你会在最上面发现如下内容：
-
-![](E:\git_project\blockchain\assets\img\memoprotocol.png)
-
-这只是协议的一个例子，但其他大多数OP_RETURN协议也以相似的方式运行。在这个例子中，这里有3个推送数据：`OP_RETURN`, `6d01`, 和 `6d656d6f`
-
-按照BitDB的文件格式索引为：
-
-- **out.b0**: `{ "op": 106 }` (OP_RETURN'的代码是 106)
-- **out.b1**: 0x6d01以base64编码的版本
-- **out.b2**:  0x6d656d6f以base64编码的版本
-
-> 关于学习更多Bitdb 文件格式，看这里[here](https://docs.bitdb.network/docs/indexer#2-bitdb-document-format)
-
-现在我们知道了memo的协议如何工作，接下来看下我们感兴趣的真实的“行为”（即图中的post memo）。我们只想抓取所有的“post memo”行为，并作展示。
-
-![](E:\git_project\blockchain\assets\img\memopost.png)
-
-所以我们所需要的是：
-
-- 一个 OP_RETURN 输出 ( {"op": 106} )
-- 要有6d02的 `out.b1`  (以 hex 格式)
-- 提取 `out.b2` (信息), 能展示在屏幕上
-
-下面是一个真实世界的memo.cash的“Post memo”交易输出：
-
-```
-{
-...
-"out": [{
-...
-}, {
-"i": 1,
-"b0": {
-"op": 106
-},
-"b1": "bQI=",
-"s1": "m\u0002",
-"b2": "SGVsbG8gZ29vZCBqb2Igb25saW5lIHdvcmtpbmcKaHR0cDovL3JlZGQuaXQvOWhmZ2xl",
-"s2": "Hello good job online working\nhttp://redd.it/9hfgle",
-"str": "<Script: OP_RETURN 2 0x6d02 51 0x48656c6c6f20676f6f64206a6f62206f6e6c696e6520776f726b696e670a687474703a2f2f726564642e69742f396866676c65>",
-"e": {
-"v": 0,
-"i": 1
-}
-}]
-}
-```
-
-下面是过滤上面格式的请求：
-
-```
-var query = {
-  v: 2,
-  e: { "out.b1": "hex" },
-  q: {
-    find: { "out.b1": "6d02" },
-    limit: 50,
-    project: { "out.b1.$": 1 }
-}
-};
-```
-
-1. v：2. 我们使用的是api版本2，所以必须在请求的协议中标注。
-
-2. e:{ "out.b1": "hex" }  由于我们的out.b1 将以hex格式的作为属性，我们需要标注编码方式为hex。
-
-3. q: 在q里面只是一个常规的MongoDB请求。
-
-   find:寻找匹配  "out.b1": "6d02" （我们在上面已经标注了hex编码，所以请求引擎将会以hex识别）
-
-   limit：得到50
-
-   project：这是一个特别的MongoDB 映射操作，仅返回一个匹配的文件内容而不是整个文件。在这里，请求将会匹配一个交易的输出，如果没有这个条件，将会返回整个的交易。我们只想返回匹配的OP_RETURN 输出，所以我们需要添加这一行内容。
-
-
-
-------
-
-#### 第三步 写网页应用
-
-   现在我们已经写好了请求，只需要对bitdb节点做一个HTTP请求并得到结果。（记住，在 **[YOUR API KEY GOES HERE]**置换为你在第一步获取的api钥匙）
-
-   <html>
-
-   <head>
-   <style>
-   body {
-   padding: 50px;
-   font-family: arial;
-   font-size: 12px;
-   }
-   div {
-   width: 500px;
-   margin: 0 auto;
-   padding: 10px 0;
-   }
-   </style>
-   <script>
-   // The query we constructed from step 2.
-   var query = {
-   v: 2,
-   e: { "out.b1": "hex" },
-   q: {
-   find: { "out.b1": "6d02" },
-   limit: 50,
-   project: { "out.b1.$": 1 }
-   }
-   };
-   // Turn the query into base64 encoded string.
-   // This is required for accessing a public bitdb node
-   var b64 = btoa(JSON.stringify(query));
-   var url = "https://bitdb.network/q/" + b64;
-   // Attach API KEY as header
-   var header = {
-   headers: { key: [YOUR API KEY GOES HERE] }
-   };
-   // Make an HTTP request to bitdb.network public endpoint
-   fetch(url, header).then(function(r) {
-   return r.json()
-   }).then(function(r) {
-   // Parse the response and render the results on the screen
-   r.confirmed.forEach(function(output) {
-   var div = document.createElement("div");
-   div.innerHTML = output.out[0].s2;
-   document.body.appendChild(div)
-   })
-   })
-   </script>
-   </head>
-
-   <body>
-   </body>
-   </html>
-
-搞定！用浏览器打开这个html文件，你应该会看到下面的截图，包含最新的memo.cash内容。（亲测有效！）
-
-![](E:\git_project\blockchain\assets\img\app.png)
-
-
-
-[点击查看英文原文：](https://docs.bitdb.network/docs/tutorial_v2)
-
-#### 什么是bitdb 2.0？
-
-根据官方说明
-
-> 1. BitDB is an autonomous database that continuously synchronizes itself with Bitcoin.
-> 2. BitDB stores every bitcoin transaction in a structured document format that can be queried against like a regular database.
-> 3. With a simple MongoDB query, anyone can easily query, filter, and build powerful decentralized applications on Bitcoin.
-
-1. BitDB是一个自动化的数据库，能够与比特币同步。
-2. BitDB以结构化的文档格式储存比特币交易，能够像一般的数据库那样进行访问。
-3. 通过简单的MongoDB请求，任何人能够非常容易地请求，过滤，以及在比特币上创建强大的去中心化应用。
+Echo park try-hard irony tbh vegan pok pok. Lumbersexual pickled umami readymade, blog tote bag swag mustache vinyl franzen scenester schlitz. Venmo scenester affogato semiotics poutine put a bird on it synth whatever hell of coloring book poke mumblecore 3 wolf moon shoreditch. Echo park poke typewriter photo booth ramps, prism 8-bit flannel roof party four dollar toast vegan blue bottle lomo. Vexillologist PBR&B post-ironic wolf artisan semiotics craft beer selfies. Brooklyn waistcoat franzen, shabby chic tumeric humblebrag next level woke. Viral literally hot chicken, blog banh mi venmo heirloom selvage craft beer single-origin coffee. Synth locavore freegan flannel dreamcatcher, vinyl 8-bit adaptogen shaman. Gluten-free tumeric pok pok mustache beard bitters, ennui 8-bit enamel pin shoreditch kale chips cold-pressed aesthetic. Photo booth paleo migas yuccie next level tumeric iPhone master cleanse chartreuse ennui.
