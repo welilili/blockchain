@@ -3,15 +3,11 @@ layout: post
 title: 5分钟创建一个比特币应用
 date: 2018-10-06 18:30:20 +0300
 description: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。
-img:how-to-start.jpg# Add image post (optional)
+img:o-five.jpg# Add image post (optional)
 fig-caption: 介绍Bitdb 2.0，以及实现一个简单的比特币应用。 # Add figcaption (optional)
 tags: [区块链, 网站]
 ---
-先修技能：
-
-HTML 和JavaScript语言即可。
-
-你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。<!-- more -->
+先修技能：HTML 和JavaScript语言即可。你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。<!-- more -->
 
 
 
