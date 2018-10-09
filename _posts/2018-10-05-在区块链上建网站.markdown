@@ -5,8 +5,7 @@ date: 2017-09-12 13:32:20 +0300
 description: 90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. 
 img: o-five.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-excerpt: I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.
-tags: [Holidays, Hawaii]
+tags: [区块链, 新闻, 网站]
 ---
 Fam据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。<!-- more -->
 之后在BCH开发者Unwriter和一个名为“Cryptograffitiweb”的工具的帮助下，Mulders的链上网站“Bitcoin Cash Hoarder”现在可以在任何浏览器上看到。Mulders表示：“如果有人能在不需要像维基解密这样的组织的情况下发布敏感信息，那么任何人都可以匿名发布信息，而不会危及自己或任何中间人。”据悉，Bitdb 2.0是一个平台，可接受比特币交易并将其放入结构化的可读文档或者在Donald Mulders此次使用的HTML代码中。
@@ -27,7 +26,7 @@ Anyway I started playing around with an idea to see how far I could take it. The
 
 作者打算在区块链上建一个简单的可以通过浏览器访问的html网站，这样即使是他妈妈也会以为这是一个普通的网站，这样有个好处，人们可以匿名发布一些敏感信息而不用通过维基泄密那样的组织。
 
-[^1]: 这里的原理没有说明，为什么可以匿名，以及可以做到多大程度上的匿名。
+【这里的原理没有说明，为什么可以匿名，以及可以做到多大程度上的匿名。】
 
 ，同时免于可能的危险。
 
