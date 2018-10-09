@@ -8,7 +8,7 @@ fig-caption: # Add figcaption (optional)
 tags: [Holidays, Hawaii]
 excerpt: 据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0。
 ---
-Fam据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。
+Fam据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，<!-- more -->详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。
 
 之后在BCH开发者Unwriter和一个名为“Cryptograffitiweb”的工具的帮助下，Mulders的链上网站“Bitcoin Cash Hoarder”现在可以在任何浏览器上看到。Mulders表示：“如果有人能在不需要像维基解密这样的组织的情况下发布敏感信息，那么任何人都可以匿名发布信息，而不会危及自己或任何中间人。”据悉，Bitdb 2.0是一个平台，可接受比特币交易并将其放入结构化的可读文档或者在Donald Mulders此次使用的HTML代码中。
 
