@@ -15,7 +15,7 @@ tags: [比特币, 应用]
 
 （[中文来源：币世界](http://www.bishijie.com/kuaixun_118500)）（英文来源 [bitcoin news: Launching a Website on the Bitcoin Cash Network Is Now a Reality](https://news.bitcoin.com/)）
 
-这篇文章翻译的就是Donald Mulders在yours上发的文章来源：[Hosting a website on the BCH blockchain with bitdb 2.0. I am close but no sigar.](https://www.yours.org/content/hosting-a-website-on-the-bch-blockchain-with-bitdb-20----------i-am-5b8346293439)由于口水话太多，没有逐一翻译。
+这篇文章翻译的就是Donald Mulders在yours上发的文章来源：[Hosting a website on the BCH blockchain with bitdb 2.0. I am close but no sigar.](https://www.yours.org/content/hosting-a-website-on-the-bch-blockchain-with-bitdb-20----------i-am-5b8346293439)由于口水话太多，没有逐一翻译。![](E:\git_project\blockchain\assets\img\HTML_code.jpg)
 
 ------
 
