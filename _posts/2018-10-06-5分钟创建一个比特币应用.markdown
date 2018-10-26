@@ -1,119 +1,181 @@
 ---
 layout: post
-title: 在区块链上建网站
+title: 5分钟创建一个比特币应用
 date: 2017-09-12 13:32:20 +0300
 description: 90's yr crucifix, selvage 8-bit listicle forage cliche shoreditch hammock microdosing synth. 
-img: o-five.jpg # Add image post (optional)
+img: o-six.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 excerpt: I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.
 tags: [比特币, 应用]
 ---
-据Bitcoin消息，近日，BCH爱好者Donald Mulders在社交媒体网络Yours.org上发表文章，详细描述了他试图利用Bitdb 2.0应用程序在BCH链上建立一个网站。<!-- more -->
-之后在BCH开发者Unwriter和一个名为“Cryptograffitiweb”的工具的帮助下，Mulders的链上网站“Bitcoin Cash Hoarder”现在可以在任何浏览器上看到。Mulders表示：“如果有人能在不需要像维基解密这样的组织的情况下发布敏感信息，那么任何人都可以匿名发布信息，而不会危及自己或任何中间人。”据悉，Bitdb 2.0是一个平台，可接受比特币交易并将其放入结构化的可读文档或者在Donald Mulders此次使用的HTML代码中。
+HTML 和JavaScript语言即可。你甚至不需要设置一个服务器，这个演示使用bitdb.network的公共端而无需服务器。<!-- more -->
 
 
 
-（[中文来源：币世界](http://www.bishijie.com/kuaixun_118500)）（英文来源 [bitcoin news: Launching a Website on the Bitcoin Cash Network Is Now a Reality](https://news.bitcoin.com/)）
+此应用100%的为前端（没有服务器），通过bitdb抓取并展示从区块链上获得的memo.cash交易。这个网页应用看起来会是这样：
 
-这篇文章翻译的就是Donald Mulders在yours上发的文章来源：[Hosting a website on the BCH blockchain with bitdb 2.0. I am close but no sigar.](https://www.yours.org/content/hosting-a-website-on-the-bch-blockchain-with-bitdb-20----------i-am-5b8346293439)由于口水话太多，没有逐一翻译。![](E:\git_project\blockchain\assets\img\HTML_code.jpg)
+![](E:\git_project\blockchain\assets\img\app.png)
+
+#### 第一步：获取bitdb.network公共节点的api钥匙
+
+bitdb.network 是一个有具有免费HTTP api 的，全是由BitDB执行的端点。这个端点完全免费，但你需要注册并获取一个api钥匙（仅为了防止DDOS攻击）。
+
+[[获取 bitdb.network API 钥匙\]](https://bitdb.network/v2/dashboard)
+
+第二步 创建BitDB请求
+
+我们将按照 [memo.cash OP_RETURN](https://memo.cash/protocol) 协议抓取比特币交易。查看这个协议条款，你会在最上面发现如下内容：
+
+![](E:\git_project\blockchain\assets\img\memoprotocol.png)
+
+这只是协议的一个例子，但其他大多数OP_RETURN协议也以相似的方式运行。在这个例子中，这里有3个推送数据：`OP_RETURN`, `6d01`, 和 `6d656d6f`
+
+按照BitDB的文件格式索引为：
+
+- **out.b0**: `{ "op": 106 }` (OP_RETURN'的代码是 106)
+- **out.b1**: 0x6d01以base64编码的版本
+- **out.b2**:  0x6d656d6f以base64编码的版本
+
+> 关于学习更多Bitdb 文件格式，看这里[here](https://docs.bitdb.network/docs/indexer#2-bitdb-document-format)
+
+现在我们知道了memo的协议如何工作，接下来看下我们感兴趣的真实的“行为”（即图中的post memo）。我们只想抓取所有的“post memo”行为，并作展示。
+
+![](E:\git_project\blockchain\assets\img\memopost.png)
+
+所以我们所需要的是：
+
+- 一个 OP_RETURN 输出 ( {"op": 106} )
+- 要有6d02的 `out.b1`  (以 hex 格式)
+- 提取 `out.b2` (信息), 能展示在屏幕上
+
+下面是一个真实世界的memo.cash的“Post memo”交易输出：
+
+```
+{
+...
+"out": [{
+...
+}, {
+"i": 1,
+"b0": {
+"op": 106
+},
+"b1": "bQI=",
+"s1": "m\u0002",
+"b2": "SGVsbG8gZ29vZCBqb2Igb25saW5lIHdvcmtpbmcKaHR0cDovL3JlZGQuaXQvOWhmZ2xl",
+"s2": "Hello good job online working\nhttp://redd.it/9hfgle",
+"str": "<Script: OP_RETURN 2 0x6d02 51 0x48656c6c6f20676f6f64206a6f62206f6e6c696e6520776f726b696e670a687474703a2f2f726564642e69742f396866676c65>",
+"e": {
+"v": 0,
+"i": 1
+}
+}]
+}
+```
+
+下面是过滤上面格式的请求：
+
+```
+var query = {
+  v: 2,
+  e: { "out.b1": "hex" },
+  q: {
+    find: { "out.b1": "6d02" },
+    limit: 50,
+    project: { "out.b1.$": 1 }
+}
+};
+```
+
+1. v：2. 我们使用的是api版本2，所以必须在请求的协议中标注。
+
+2. e:{ "out.b1": "hex" }  由于我们的out.b1 将以hex格式的作为属性，我们需要标注编码方式为hex。
+
+3. q: 在q里面只是一个常规的MongoDB请求。
+
+   find:寻找匹配  "out.b1": "6d02" （我们在上面已经标注了hex编码，所以请求引擎将会以hex识别）
+
+   limit：得到50
+
+   project：这是一个特别的MongoDB 映射操作，仅返回一个匹配的文件内容而不是整个文件。在这里，请求将会匹配一个交易的输出，如果没有这个条件，将会返回整个的交易。我们只想返回匹配的OP_RETURN 输出，所以我们需要添加这一行内容。
+
+
 
 ------
 
-I can do a little HTML and I can mess around a littble bit in existing code I take from others. I am just starting to learn and had only about 2 lessons so far. With a lot of trial and error, I can make a simple website, but that's about it. I still have a long long way to go in mastering the art of programming. But I am taking baby steps towards this goal. Inspired by the BitDB 2.0 from [Unwriter](https://www.yours.org/@unwriter) (<https://www.yours.org/content/introducing-bitdb-20-e8c17c845939>) I just started working on a idea, but needless to say for now I am way over my head. 
+#### 第三步 写网页应用
 
-作者说自己会一点html，编程属于初学者，然后在bitdb2.0 的启发下，动手做了一个简单的网站。
+   现在我们已经写好了请求，只需要对bitdb节点做一个HTTP请求并得到结果。（记住，在 **[YOUR API KEY GOES HERE]**置换为你在第一步获取的api钥匙）
 
-Anyway I started playing around with an idea to see how far I could take it. The idea is to host a simple HTML website on the bitcoin cash blockchain that easily could be viewed in a browser. In such a way that even my own mother is able to view it as if it was just an ordinairy website. Is there a use case? Does this even need blockchain? Well imagine if someone could publish sensitive information without the need for organisation’s such as WikiLeaks, readable as a ordinairy website for anyone in the world. This way anyone could publish information anonymous without endangering themselfs or any middleman. People like Julian Assange are hard to find nowadays, and I do not expect that there are many people who dare to take on such a role in the future. Freedom of expression, freedom of information, free journalism and a secure way to publish information for whistleblowers. This is the use case.
+   <html>
 
-作者打算在区块链上建一个简单的可以通过浏览器访问的html网站，这样即使是他妈妈也会以为这是一个普通的网站，这样有个好处，人们可以匿名发布一些敏感信息而不用通过维基泄密那样的组织。
+   <head>
+   <style>
+   body {
+   padding: 50px;
+   font-family: arial;
+   font-size: 12px;
+   }
+   div {
+   width: 500px;
+   margin: 0 auto;
+   padding: 10px 0;
+   }
+   </style>
+   <script>
+   // The query we constructed from step 2.
+   var query = {
+   v: 2,
+   e: { "out.b1": "hex" },
+   q: {
+   find: { "out.b1": "6d02" },
+   limit: 50,
+   project: { "out.b1.$": 1 }
+   }
+   };
+   // Turn the query into base64 encoded string.
+   // This is required for accessing a public bitdb node
+   var b64 = btoa(JSON.stringify(query));
+   var url = "https://bitdb.network/q/" + b64;
+   // Attach API KEY as header
+   var header = {
+   headers: { key: [YOUR API KEY GOES HERE] }
+   };
+   // Make an HTTP request to bitdb.network public endpoint
+   fetch(url, header).then(function(r) {
+   return r.json()
+   }).then(function(r) {
+   // Parse the response and render the results on the screen
+   r.confirmed.forEach(function(output) {
+   var div = document.createElement("div");
+   div.innerHTML = output.out[0].s2;
+   document.body.appendChild(div)
+   })
+   })
+   </script>
+   </head>
 
-【这里的原理没有说明，为什么可以匿名，以及可以做到多大程度上的匿名。】
+   <body>
+   </body>
+   </html>
 
-，同时免于可能的危险。
+搞定！用浏览器打开这个html文件，你应该会看到下面的截图，包含最新的memo.cash内容。（亲测有效！）
 
-To see how far I could take this idea I made a very simple website in HTML and I included a snake game in JavaScript just to see if it would work. Lean and mean. This is how the site would look like. 
+![](E:\git_project\blockchain\assets\img\app.png)
 
-作者在网页里用JavaScript写了一个贪吃蛇游戏。
 
-![](E:\git_project\blockchain\assets\img\Bitcoin_Cash_Hoarder.jpg)
 
-Yes it is just snake but I renamed it Bitcoin Cash Hoarder, because it sound way cooler, and made it green and orange. I used [https://www.cryptograffiti.info](https://www.mttr.app/) to upload the code to the blockchain. This is easy as pie.
+[点击查看英文原文：](https://docs.bitdb.network/docs/tutorial_v2)
 
-作者用[https://www.cryptograffiti.info](https://www.mttr.app/)上传代码到区块链
+#### 什么是bitdb 2.0？
 
- The best way to explain what happens is that just like with [https://memo.cash](https://simpleledger.cash/), you make a OpReturn transaction where text is inserted, but since my text does not fit into a single transaction, it creates many transactions a bit similar to [https://www.scale.cash](https://chrome.google.com/webstore/detail/memo%2B%2B/efbehadlmgmkdflmmfjnadbnfamloeie) (the stress test tool) and it inserts small pieces of text with each transaction until it is finished. 
+根据官方说明
 
-就像使用[https://memo.cash](https://simpleledger.cash/)（memo是一个基于区块链的活动资金筹集工具）一样，你使用了一个opreturn 交易，在文本被插入的地方，但由于我的文本没有适合一个单笔交易，所以他创造了许多交易，这有点像[https://www.scale.cash](https://chrome.google.com/webstore/detail/memo%2B%2B/efbehadlmgmkdflmmfjnadbnfamloeie)（压力测试工具），在完成前它在每一笔交易中插入了文本的小片段。
+> 1. BitDB is an autonomous database that continuously synchronizes itself with Bitcoin.
+> 2. BitDB stores every bitcoin transaction in a structured document format that can be queried against like a regular database.
+> 3. With a simple MongoDB query, anyone can easily query, filter, and build powerful decentralized applications on Bitcoin.
 
-Here you can see my transaction on a bitcoin cash explorer: <https://explorer.bitcoin.com/bch/tx/fa69fb53bb45cd9df375f93f6cca52d044e4505eda5ce1b9504ae2c6a999ae27> 
-
- 
-
-你可以在比特币浏览器上看到我的交易记录。
-
-The HTML code is now stored on the blockchain. 
-
-现在Html 代码已经被储存在区块链上。
-
-Step 1 is easy, anyone could do this. But how can I extract this information from the blockchain and display it as a website. I hoped bitdb could help me with this problem. If you go to the bitdb explorer ([https://bitdb.network/explorer](http://www.memopay.xyz/)) anyone should be able to extract the HTML code form the blockchain. 
-
-第一步，如果你使用bitdb浏览器([https://bitdb.network/explorer](http://www.memopay.xyz/))，就可以从区块链中提取html代码。
-
-This is the promise. As instructed on the bitdb website I used some standard code available and included the correct bitcoin cash address. This is the code I used for the query:
-
-照着bitdb网站上给的指导，我用了一些标准代码，其中包括正确的比特币地址。下面是我查询时用的代码
-
-```
-{ "v": 2, 
-
-"q": 
-
-{ "find": {
-
- "in.e.a": "qqfse6sldawf742ydclj2n2uwgy7pxnd4ctlnph68a" 
-
-}, 
-
-"limit": 10 
-
-}
-
- }
-```
-
- 
-
-When you paste this code in the bitdb explorer and run the query you are able to find my HTML code. Just look at “out” & “s2” and follow every box below. There it is. 
-
-当你把代码粘贴到bitdb浏览器并运行查询，你就能够看到我的html代码。在out和s2里，如下
-
-![](E:\git_project\blockchain\assets\img\HTML_code.jpg)
-
-But this is not even near being a website. Whatever I tried, I was not able to make the HTML more readable, let alone, display it in a browser. Just to say it again, I am a noob and lacking such skills.
-
-但这还不能叫做一个网站，不管我怎么试，我也不能是html更具可读性。因为我只是一个初学者。
-
- I did look into GitHub to see if the code of sites like memo and matter could help me out but I couldn’t make enough sense of it to replicate such a activity. 
-
-我在GitHub上找了找看看有没有和我网站的代码相似的，但没找到。
-
-I should actually should start with lesson 3 and 4 of my HTML course because I am stuck. Step 2 is a lot harder for me.
-
-我应该开始进一步学习一下html课程。第二步有点难对于我来说。
-
-But not giving up yet and looking for a workaround. I went back to [cryptograffiti.info](https://t.me/joinchat/HH1DDQ8pZlSlsdNcKgIcxw) to see if I could extract my code from the blockchain here. 
-
-但还没有放弃。我又回到[cryptograffiti.info](https://t.me/joinchat/HH1DDQ8pZlSlsdNcKgIcxw)去看我是否能从区块链上提取我的代码。
-
- 
-
-As you can see on this website it shows many text messages. Your text could become hard to find over time as new messages are posted. 
-
- 
-
-正如你在这个网站上看到的，它展示了很多的文本信息。随着新信息不断发布出现，你的文本会难以被找到。
-
- 
-
-I also looked on GitHub for the code of cryptograffiti and after reading some instruction, I figured out a simple hack. 
+1. BitDB是一个自动化的数据库，能够与比特币同步。
+2. BitDB以结构化的文档格式储存比特币交易，能够像一般的数据库那样进行访问。
+3. 通过简单的MongoDB请求，任何人能够非常容易地请求，过滤，以及在比特币上创建强大的去中心化应用。
 
