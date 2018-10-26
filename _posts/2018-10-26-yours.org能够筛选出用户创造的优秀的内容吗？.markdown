@@ -7,7 +7,7 @@ img: o-five.jpg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [比特币, yours]
 ---
-“Yours是一个社交网络，如果你创造了价值，你可以在这里赚到比特币现金。我们的使命是提高互联网内容的质量，让人们从事自己喜欢的工作并获得报酬”。
+“Yours是一个社交网络，如果你创造了价值，你可以在这里赚到比特币现金。我们的使命是提高互联网内容的质量，让人们从事自己喜欢的工作并获得报酬”。<!-- more -->
 
 首先看一下yours的机制：
 
